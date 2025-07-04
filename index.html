@@ -220,7 +220,7 @@
         }
 
         /* Custom Modal */
-        #customModal, #createGoalModal, #createProjectModal, #advancedReportModal, #editTimeEntryModal, #editGoalModal, #editProjectModal, #exportDataModal {
+        #customModal, #createGoalModal, #createProjectModal, #advancedReportModal, #editTimeEntryModal, #editGoalModal, #editProjectModal, #exportDataModal, #importDataModal {
             background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
         }
         #customModal > div {
@@ -232,13 +232,13 @@
             max-width: 500px; /* Max width for general alerts */
             width: 90%; /* Fluid width */
         }
-        #createGoalModal > div, #createProjectModal > div, #editTimeEntryModal > div, #editGoalModal > div, #editProjectModal > div { /* Specific styles for modals */
+        #createGoalModal > div, #createProjectModal > div, #editTimeEntryModal > div, #editGoalModal > div, #editProjectModal > div, #importDataModal > div { /* Specific styles for modals */
             background-color: #3a3a3a; /* Dark modal background */
             color: #e0e0e0;
             border-radius: 1rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             padding: 1rem; /* Reduced padding */
-            max-width: 350px; /* Further reduced max-width */
+            max-width: 400px; /* Adjusted max-width */
             width: 90%; /* Fluid width */
             max-height: 80vh; /* Max height for scrollability */
             overflow-y: auto; /* Enable vertical scrolling */
@@ -257,13 +257,13 @@
         #modalMessage {
             color: #e0e0e0;
         }
-        #modalButtons button, #createGoalModal button, #createProjectModal button, #advancedReportModal button, #editTimeEntryModal button, #editGoalModal button, #editProjectModal button, #exportDataModal button {
+        #modalButtons button, #createGoalModal button, #createProjectModal button, #advancedReportModal button, #editTimeEntryModal button, #editGoalModal button, #editProjectModal button, #exportDataModal button, #importDataModal button {
             @apply py-2 px-4 rounded-lg font-bold transition duration-300 ease-in-out;
         }
-        #modalConfirmBtn, #modalCloseBtn, #createGoalBtnModal, #createProjectBtnModal, #generateReportBtn, #saveTimeEntryBtn, #saveGoalEditBtn, #saveProjectEditBtn, #exportDataConfirmBtn {
+        #modalConfirmBtn, #modalCloseBtn, #createGoalBtnModal, #createProjectBtnModal, #generateReportBtn, #saveTimeEntryBtn, #saveGoalEditBtn, #saveProjectEditBtn, #exportDataConfirmBtn, #importDataConfirmBtn {
             @apply bg-purple-600 hover:bg-purple-700 text-white;
         }
-        #modalCancelBtn, #cancelGoalBtn, #cancelProjectBtn, #closeReportModalBtn, #cancelTimeEntryEditBtn, #cancelGoalEditBtn, #cancelProjectEditBtn, #cancelExportBtn {
+        #modalCancelBtn, #cancelGoalBtn, #cancelProjectBtn, #closeReportModalBtn, #cancelTimeEntryEditBtn, #cancelGoalEditBtn, #cancelProjectEditBtn, #cancelExportBtn, #cancelImportBtn {
             @apply bg-gray-600 hover:bg-gray-700 text-white;
         }
         .form-group {
@@ -335,7 +335,8 @@
         #editTimeEntryModal > div::-webkit-scrollbar,
         #editGoalModal > div::-webkit-scrollbar,
         #editProjectModal > div::-webkit-scrollbar,
-        #exportDataModal > div::-webkit-scrollbar { /* Apply to modal content too */
+        #exportDataModal > div::-webkit-scrollbar,
+        #importDataModal > div::-webkit-scrollbar { /* Apply to modal content too */
             width: 8px;
         }
         .scrollable-content::-webkit-scrollbar-track,
@@ -345,7 +346,8 @@
         #editTimeEntryModal > div::-webkit-scrollbar-track,
         #editGoalModal > div::-webkit-scrollbar-track,
         #editProjectModal > div::-webkit-scrollbar-track,
-        #exportDataModal > div::-webkit-scrollbar-track {
+        #exportDataModal > div::-webkit-scrollbar-track,
+        #importDataModal > div::-webkit-scrollbar-track {
             background: #3a3a3a;
             border-radius: 10px;
         }
@@ -356,7 +358,8 @@
         #editTimeEntryModal > div::-webkit-scrollbar-thumb,
         #editGoalModal > div::-webkit-scrollbar-thumb,
         #editProjectModal > div::-webkit-scrollbar-thumb,
-        #exportDataModal > div::-webkit-scrollbar-thumb {
+        #exportDataModal > div::-webkit-scrollbar-thumb,
+        #importDataModal > div::-webkit-scrollbar-thumb {
             background: #555;
             border-radius: 10px;
         }
@@ -367,7 +370,8 @@
         #editTimeEntryModal > div::-webkit-scrollbar-thumb:hover,
         #editGoalModal > div::-webkit-scrollbar-thumb:hover,
         #editProjectModal > div::-webkit-scrollbar-thumb:hover,
-        #exportDataModal > div::-webkit-scrollbar-thumb:hover {
+        #exportDataModal > div::-webkit-scrollbar-thumb:hover,
+        #importDataModal > div::-webkit-scrollbar-thumb:hover {
             background: #777;
         }
 
@@ -446,7 +450,7 @@
             .main-content {
                 grid-template-columns: 1fr;
             }
-            #createGoalModal > div, #createProjectModal > div, #advancedReportModal > div, #editTimeEntryModal > div, #editGoalModal > div, #editProjectModal > div, #exportDataModal > div {
+            #createGoalModal > div, #createProjectModal > div, #advancedReportModal > div, #editTimeEntryModal > div, #editGoalModal > div, #editProjectModal > div, #exportDataModal > div, #importDataModal > div {
                 padding: 1rem;
             }
         }
@@ -515,6 +519,10 @@
                     <button id="openAdvancedReportModalBtn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 flex items-center gap-2 w-full justify-center" aria-label="Open Advanced Reports">
                         <i class="fas fa-chart-bar"></i> Advanced Reports
                     </button>
+                    <!-- *** NEW: Import Button *** -->
+                    <button id="openImportDataModalBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 flex items-center gap-2 w-full justify-center" aria-label="Open Import Data Options">
+                        <i class="fas fa-upload"></i> Import Data
+                    </button>
                     <button id="openExportDataModalBtn" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 flex items-center gap-2 w-full justify-center" aria-label="Open Export Data Options">
                         <i class="fas fa-download"></i> Export Data
                     </button>
@@ -563,22 +571,22 @@
                     <!-- Projects will be dynamically loaded here -->
                 </select>
             </div>
-
+            
             <div class="form-group">
                 <label>FOR <i class="fas fa-info-circle text-gray-400 ml-1"></i></label>
-                <div class="flex space-x-2">
-                    <select id="forTypeSelect" class="w-1/3" aria-label="Goal Type">
+                <div class="flex items-center space-x-2">
+                    <select id="forTypeSelect" class="flex-shrink-0">
                         <option value="atLeast">at least</option>
-                        <!-- Other options like "exactly", "at most" could be added -->
                     </select>
-                    <input type="number" id="forHoursInput" placeholder="hours" class="w-1/3" min="0.1" step="0.1" aria-required="true" aria-label="Target Hours">
-                    <select id="forFrequencySelect" class="w-1/3" aria-label="Goal Frequency">
+                    <input type="number" id="forHoursInput" placeholder="hours" class="flex-grow" min="0" step="1" aria-label="Target Hours">
+                    <input type="number" id="forMinutesInput" placeholder="mins" class="flex-grow" min="0" max="59" step="1" aria-label="Target Minutes">
+                    <select id="forFrequencySelect" class="flex-shrink-0">
                         <option value="day">every day</option>
                         <option value="week">every week</option>
                         <option value="month">every month</option>
                     </select>
                 </div>
-                <p id="forHoursError" class="text-red-400 text-sm mt-1 hidden">Please enter a valid positive number for hours.</p>
+                <p id="forTimeError" class="text-red-400 text-sm mt-1 hidden">Please enter a valid positive time.</p>
             </div>
 
             <div class="form-group">
@@ -713,18 +721,19 @@
             </div>
             <div class="form-group">
                 <label>FOR</label>
-                <div class="flex space-x-2">
-                    <select id="editForTypeSelect" class="w-1/3" aria-label="Edit Goal Type">
+                <div class="flex items-center space-x-2">
+                    <select id="editForTypeSelect" class="flex-shrink-0">
                         <option value="atLeast">at least</option>
                     </select>
-                    <input type="number" id="editForHoursInput" placeholder="hours" class="w-1/3" min="0.1" step="0.1" aria-required="true" aria-label="Edit Target Hours">
-                    <select id="editForFrequencySelect" class="w-1/3" aria-label="Edit Goal Frequency">
+                    <input type="number" id="editForHoursInput" placeholder="hours" class="flex-grow" min="0" step="1" aria-label="Edit Target Hours">
+                    <input type="number" id="editForMinutesInput" placeholder="mins" class="flex-grow" min="0" max="59" step="1" aria-label="Edit Target Minutes">
+                    <select id="editForFrequencySelect" class="flex-shrink-0">
                         <option value="day">every day</option>
                         <option value="week">every week</option>
                         <option value="month">every month</option>
                     </select>
                 </div>
-                <p id="editForHoursError" class="text-red-400 text-sm mt-1 hidden">Please enter a valid positive number for hours.</p>
+                <p id="editForTimeError" class="text-red-400 text-sm mt-1 hidden">Please enter a valid positive time.</p>
             </div>
             <div class="form-group">
                 <label for="editUntilDateInput">UNTIL</label>
@@ -758,68 +767,57 @@
             </div>
             <div class="flex justify-end space-x-4 mt-6">
                 <button id="cancelProjectEditBtn" class="btn-secondary" aria-label="Cancel Project Edit">Cancel</button>
-                <button id="saveProjectEditBtn" class="btn-primary" aria-label="Save Project Changes">Save Changes</button>
+                <button id="saveProjectEditBtn" class="btn-primary" aria-label="Save Project Changes">Save Project Changes</button>
             </div>
         </div>
     </div>
 
-    <!-- Export Data Modal -->
+    <!-- *** MODIFIED: Simplified Export Modal *** -->
     <div id="exportDataModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50">
         <div class="bg-gray-800 p-6 rounded-lg shadow-xl max-w-md w-full" role="dialog" aria-modal="true" aria-labelledby="exportDataModalTitle">
             <div class="modal-header">
-                <h3 id="exportDataModalTitle">Export Data</h3>
+                <h3 id="exportDataModalTitle">Export All Data</h3>
                 <button id="closeExportModalBtn" class="modal-close-btn" aria-label="Close Export Data Modal"><i class="fas fa-times"></i></button>
+            </div>
+            <p class="text-gray-400 mb-4">This will export all your projects, goals, and time entries into a single JSON file. You can use this file to import your data back into the app later.</p>
+            <div class="flex justify-end space-x-4 mt-6">
+                <button id="cancelExportBtn" class="btn-secondary" aria-label="Cancel Export">Cancel</button>
+                <button id="exportDataConfirmBtn" class="btn-primary" aria-label="Confirm Export">Export as JSON</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- *** NEW: Import Data Modal *** -->
+    <div id="importDataModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-xl max-w-md w-full" role="dialog" aria-modal="true" aria-labelledby="importDataModalTitle">
+            <div class="modal-header">
+                <h3 id="importDataModalTitle">Import Data</h3>
+                <button id="closeImportModalBtn" class="modal-close-btn" aria-label="Close Import Data Modal"><i class="fas fa-times"></i></button>
             </div>
 
             <div class="form-group">
-                <label>Select Data to Export:</label>
-                <div class="flex flex-col space-y-2">
-                    <label class="inline-flex items-center">
-                        <input type="radio" name="exportDataType" value="timeEntries" checked aria-label="Export Time Entries">
-                        <span class="ml-2">Time Entries</span>
-                    </label>
-                    <label class="inline-flex items-center">
-                        <input type="radio" name="exportDataType" value="goals" aria-label="Export Goals">
-                        <span class="ml-2">Goals</span>
-                    </label>
-                    <label class="inline-flex items-center">
-                        <input type="radio" name="exportDataType" value="projects" aria-label="Export Projects">
-                        <span class="ml-2">Projects</span>
-                    </label>
-                </div>
+                <label for="importFileInput">Select JSON Backup File</label>
+                <input type="file" id="importFileInput" accept=".json" class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-purple-100 file:text-purple-700 hover:file:bg-purple-200">
+                <p id="importFileError" class="text-red-400 text-sm mt-1 hidden">Please select a valid JSON file.</p>
             </div>
 
-            <div id="timeEntriesExportOptions" class="form-group border border-gray-600 rounded-lg p-3">
-                <label>Time Entries Export Scope:</label>
+            <div class="form-group">
+                <label>Import Mode:</label>
                 <div class="flex flex-col space-y-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" name="timeEntriesScope" value="all" checked aria-label="Export All Time Entries">
-                        <span class="ml-2">All Time Entries</span>
+                        <input type="radio" name="importMode" value="merge" checked aria-label="Merge with existing data">
+                        <span class="ml-2">Merge with existing data</span>
                     </label>
                     <label class="inline-flex items-center">
-                        <input type="radio" name="timeEntriesScope" value="filtered" aria-label="Export Filtered Time Entries">
-                        <span class="ml-2">Filtered by Report Criteria</span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="form-group mt-4">
-                <label>Select Export Format:</label>
-                <div class="flex space-x-4">
-                    <label class="inline-flex items-center">
-                        <input type="radio" name="exportFormat" value="csv" checked aria-label="Export as CSV">
-                        <span class="ml-2">CSV</span>
-                    </label>
-                    <label class="inline-flex items-center">
-                        <input type="radio" name="exportFormat" value="json" aria-label="Export as JSON">
-                        <span class="ml-2">JSON</span>
+                        <input type="radio" name="importMode" value="replace" aria-label="Replace all existing data">
+                        <span class="ml-2">Replace all existing data</span>
                     </label>
                 </div>
             </div>
 
             <div class="flex justify-end space-x-4 mt-6">
-                <button id="cancelExportBtn" class="btn-secondary" aria-label="Cancel Export">Cancel</button>
-                <button id="exportDataConfirmBtn" class="btn-primary" aria-label="Confirm Export">Export</button>
+                <button id="cancelImportBtn" class="btn-secondary" aria-label="Cancel Import">Cancel</button>
+                <button id="importDataConfirmBtn" class="btn-primary" aria-label="Confirm Import">Import</button>
             </div>
         </div>
     </div>
@@ -829,7 +827,7 @@
 
 
     <script type="module">
-        // UI Elements
+        // --- Main UI Elements ---
         const projectSelect = document.getElementById('projectSelect');
         const taskInput = document.getElementById('taskInput');
         const playPauseButton = document.getElementById('playPauseButton');
@@ -841,50 +839,41 @@
         const noEntriesMessage = document.getElementById('noEntriesMessage');
         const goalsList = document.getElementById('goalsList');
         const noGoalsMessage = document.getElementById('noGoalsMessage');
-        const openCreateGoalModalBtn = document.getElementById('openCreateGoalModalBtn');
         const projectsList = document.getElementById('projectsList');
         const noProjectsMessage = document.getElementById('noProjectsMessage');
-        const openCreateProjectModalBtn = document.getElementById('openCreateProjectModalBtn');
-        const openAdvancedReportModalBtn = document.getElementById('openAdvancedReportModalBtn'); // New button
-        const openExportDataModalBtn = document.getElementById('openExportDataModalBtn'); // New button
+        const toastContainer = document.getElementById('toastContainer');
 
-        // Date Navigation Elements
+        // --- Date Navigation ---
         const prevDateBtn = document.getElementById('prevDateBtn');
         const nextDateBtn = document.getElementById('nextDateBtn');
         const goToTodayBtn = document.getElementById('goToTodayBtn');
-        const currentViewDateDisplay = document.getElementById('currentViewDateDisplay'); // For "Tasks for [Date]"
-        const currentViewDateDisplayHeader = document.getElementById('currentViewDateDisplayHeader'); // For "Tasks for [Date]" in header
+        const currentViewDateDisplay = document.getElementById('currentViewDateDisplay');
+        const currentViewDateDisplayHeader = document.getElementById('currentViewDateDisplayHeader');
 
-        // Timer variables
-        let timerInterval = null;
-        let startTime = null;
-        let currentTask = null; // Stores the current task object being tracked
+        // --- Buttons to Open Modals ---
+        const openCreateGoalModalBtn = document.getElementById('openCreateGoalModalBtn');
+        const openCreateProjectModalBtn = document.getElementById('openCreateProjectModalBtn');
+        const openAdvancedReportModalBtn = document.getElementById('openAdvancedReportModalBtn');
+        const openExportDataModalBtn = document.getElementById('openExportDataModalBtn');
+        const openImportDataModalBtn = document.getElementById('openImportDataModalBtn'); // New
 
-        // Date for displaying tasks (can be navigated)
-        let currentDisplayedDate = new Date(); // Date currently shown in the task list
-
-        // Data structures for local storage
-        let timeEntries = []; // Array of { id, task, projectId, projectName, startTime, endTime, durationMs }
-        let goals = [];       // Array of { id, name, targetMs, frequency, endDate, currentMs, lastResetDate, projectId, projectName }
-        let projects = [];    // Array of { id, name }
-
-        // Custom Modal Elements (for alerts/confirmations)
+        // --- General Modal Elements ---
         const customModal = document.getElementById('customModal');
         const modalMessage = document.getElementById('modalMessage');
         const modalConfirmBtn = document.getElementById('modalConfirmBtn');
         const modalCancelBtn = document.getElementById('modalCancelBtn');
         const modalCloseBtn = document.getElementById('modalCloseBtn');
 
-        // Create Goal Modal Elements
+        // --- Create Goal Modal Elements ---
         const createGoalModal = document.getElementById('createGoalModal');
         const closeCreateGoalModalBtn = document.getElementById('closeCreateGoalModalBtn');
         const goalNameInput = document.getElementById('goalNameInput');
         const goalNameError = document.getElementById('goalNameError');
-        const memberSelect = document.getElementById('memberSelect');
-        const goalProjectSelect = document.getElementById('goalProjectSelect'); // New project select for goals
+        const goalProjectSelect = document.getElementById('goalProjectSelect');
         const forTypeSelect = document.getElementById('forTypeSelect');
         const forHoursInput = document.getElementById('forHoursInput');
-        const forHoursError = document.getElementById('forHoursError');
+        const forMinutesInput = document.getElementById('forMinutesInput');
+        const forTimeError = document.getElementById('forTimeError');
         const forFrequencySelect = document.getElementById('forFrequencySelect');
         const untilDateInput = document.getElementById('untilDateInput');
         const noEndDateCheckbox = document.getElementById('noEndDateCheckbox');
@@ -892,7 +881,7 @@
         const cancelGoalBtn = document.getElementById('cancelGoalBtn');
         const createGoalBtnModal = document.getElementById('createGoalBtnModal');
 
-        // Create Project Modal Elements
+        // --- Create Project Modal Elements ---
         const createProjectModal = document.getElementById('createProjectModal');
         const closeCreateProjectModalBtn = document.getElementById('closeCreateProjectModalBtn');
         const projectNameInput = document.getElementById('projectNameInput');
@@ -900,7 +889,7 @@
         const cancelProjectBtn = document.getElementById('cancelProjectBtn');
         const createProjectBtnModal = document.getElementById('createProjectBtnModal');
 
-        // Advanced Report Modal Elements
+        // --- Advanced Report Modal Elements ---
         const advancedReportModal = document.getElementById('advancedReportModal');
         const closeReportModalBtn = document.getElementById('closeReportModalBtn');
         const reportProjectSelect = document.getElementById('reportProjectSelect');
@@ -911,7 +900,7 @@
         const reportResultsList = document.getElementById('reportResultsList');
         const reportTotalDisplay = document.getElementById('reportTotalDisplay');
 
-        // Edit Time Entry Modal Elements
+        // --- Edit Time Entry Modal Elements ---
         const editTimeEntryModal = document.getElementById('editTimeEntryModal');
         const closeTimeEntryEditModalBtn = document.getElementById('closeTimeEntryEditModalBtn');
         const editTimeEntryId = document.getElementById('editTimeEntryId');
@@ -921,7 +910,7 @@
         const cancelTimeEntryEditBtn = document.getElementById('cancelTimeEntryEditBtn');
         const saveTimeEntryBtn = document.getElementById('saveTimeEntryBtn');
 
-        // Edit Goal Modal Elements
+        // --- Edit Goal Modal Elements ---
         const editGoalModal = document.getElementById('editGoalModal');
         const closeGoalEditModalBtn = document.getElementById('closeGoalEditModalBtn');
         const editGoalId = document.getElementById('editGoalId');
@@ -930,7 +919,8 @@
         const editGoalProjectSelect = document.getElementById('editGoalProjectSelect');
         const editForTypeSelect = document.getElementById('editForTypeSelect');
         const editForHoursInput = document.getElementById('editForHoursInput');
-        const editForHoursError = document.getElementById('editForHoursError');
+        const editForMinutesInput = document.getElementById('editForMinutesInput');
+        const editForTimeError = document.getElementById('editForTimeError');
         const editForFrequencySelect = document.getElementById('editForFrequencySelect');
         const editUntilDateInput = document.getElementById('editUntilDateInput');
         const editNoEndDateCheckbox = document.getElementById('editNoEndDateCheckbox');
@@ -938,7 +928,7 @@
         const cancelGoalEditBtn = document.getElementById('cancelGoalEditBtn');
         const saveGoalEditBtn = document.getElementById('saveGoalEditBtn');
 
-        // Edit Project Modal Elements
+        // --- Edit Project Modal Elements ---
         const editProjectModal = document.getElementById('editProjectModal');
         const closeProjectEditModalBtn = document.getElementById('closeProjectEditModalBtn');
         const editProjectId = document.getElementById('editProjectId');
@@ -948,30 +938,44 @@
         const cancelProjectEditBtn = document.getElementById('cancelProjectEditBtn');
         const saveProjectEditBtn = document.getElementById('saveProjectEditBtn');
 
-        // Export Data Modal Elements
+        // --- Export Data Modal Elements ---
         const exportDataModal = document.getElementById('exportDataModal');
         const closeExportModalBtn = document.getElementById('closeExportModalBtn');
-        const exportDataTypeRadios = document.querySelectorAll('input[name="exportDataType"]');
-        const timeEntriesExportOptions = document.getElementById('timeEntriesExportOptions');
-        const timeEntriesScopeRadios = document.querySelectorAll('input[name="timeEntriesScope"]');
-        const exportFormatRadios = document.querySelectorAll('input[name="exportFormat"]');
         const cancelExportBtn = document.getElementById('cancelExportBtn');
         const exportDataConfirmBtn = document.getElementById('exportDataConfirmBtn');
 
-        // Toast Notification Container
-        const toastContainer = document.getElementById('toastContainer');
+        // --- Import Data Modal Elements (New) ---
+        const importDataModal = document.getElementById('importDataModal');
+        const closeImportModalBtn = document.getElementById('closeImportModalBtn');
+        const importFileInput = document.getElementById('importFileInput');
+        const importFileError = document.getElementById('importFileError');
+        const cancelImportBtn = document.getElementById('cancelImportBtn');
+        const importDataConfirmBtn = document.getElementById('importDataConfirmBtn');
 
+        // --- State Variables ---
+        let timerInterval = null;
+        let startTime = null;
+        let currentTask = null;
+        let currentDisplayedDate = new Date();
+        let timeEntries = [];
+        let goals = [];
+        let projects = [];
 
-        /**
-         * Displays a custom modal for alerts or confirmations.
-         * @param {string} message - The message to display in the modal.
-         * @param {'alert'|'confirm'} type - The type of modal ('alert' or 'confirm').
-         * @param {function(boolean):void} [onConfirm] - Callback function for 'confirm' type, receives true/false.
-         * For 'alert' type, it's a simple close callback.
-         */
+        // --- Utility Functions ---
+        
+        function toggleModal(modalElement, show) {
+            if (show) {
+                modalElement.classList.remove('hidden');
+                modalElement.classList.add('flex');
+                setFocusToFirstElement(modalElement);
+            } else {
+                modalElement.classList.add('hidden');
+                modalElement.classList.remove('flex');
+            }
+        }
+
         function showCustomModal(message, type = 'alert', onConfirm = null) {
             modalMessage.textContent = message;
-            // Clear previous event listeners
             modalConfirmBtn.onclick = null;
             modalCancelBtn.onclick = null;
             modalCloseBtn.onclick = null;
@@ -980,557 +984,310 @@
                 modalConfirmBtn.classList.remove('hidden');
                 modalCancelBtn.classList.remove('hidden');
                 modalCloseBtn.classList.add('hidden');
-                modalConfirmBtn.onclick = () => {
-                    customModal.classList.add('hidden');
-                    if (onConfirm) onConfirm(true);
-                };
-                modalCancelBtn.onclick = () => {
-                    customModal.classList.add('hidden');
-                    if (onConfirm) onConfirm(false);
-                };
-            } else { // 'alert' type
+                modalConfirmBtn.onclick = () => { toggleModal(customModal, false); if (onConfirm) onConfirm(true); };
+                modalCancelBtn.onclick = () => { toggleModal(customModal, false); if (onConfirm) onConfirm(false); };
+            } else {
                 modalConfirmBtn.classList.add('hidden');
                 modalCancelBtn.classList.add('hidden');
                 modalCloseBtn.classList.remove('hidden');
-                modalCloseBtn.onclick = () => {
-                    customModal.classList.add('hidden');
-                    if (onConfirm) onConfirm(); // For alerts, onConfirm might be a simple callback
-                };
+                modalCloseBtn.onclick = () => { toggleModal(customModal, false); if (onConfirm) onConfirm(); };
             }
-            customModal.classList.remove('hidden');
-            customModal.classList.add('flex'); // Ensure it's flex for centering
-            // Set focus to the first interactive element in the alert modal
-            if (type === 'confirm') {
-                modalConfirmBtn.focus();
-            } else {
-                modalCloseBtn.focus();
-            }
+            toggleModal(customModal, true);
         }
 
-        /**
-         * Shows a temporary toast notification.
-         * @param {string} message - The message to display.
-         * @param {'success'|'error'} type - The type of notification.
-         * @param {number} duration - Duration in milliseconds.
-         */
         function showToast(message, type = 'success', duration = 3000) {
             const toast = document.createElement('div');
             toast.className = `toast-notification ${type}`;
             toast.textContent = message;
             toastContainer.appendChild(toast);
-
-            // Trigger reflow to enable transition
             void toast.offsetWidth;
             toast.classList.add('show');
-
             setTimeout(() => {
                 toast.classList.remove('show');
-                toast.addEventListener('transitionend', () => {
-                    toast.remove();
-                });
+                toast.addEventListener('transitionend', () => toast.remove());
             }, duration);
         }
 
-        /**
-         * Sets focus to the first focusable element inside a modal.
-         * @param {HTMLElement} modalElement - The modal DOM element.
-         */
         function setFocusToFirstElement(modalElement) {
-            const focusableElements = modalElement.querySelectorAll(
-                'button, [href], input:not([type="hidden"]):not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
-            );
-            const firstFocusableElement = focusableElements[0];
-            if (firstFocusableElement) {
-                firstFocusableElement.focus();
-            }
+            const focusable = modalElement.querySelectorAll('button, [href], input:not([type="hidden"]):not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (focusable[0]) focusable[0].focus();
         }
 
-        /**
-         * Hides an error message element and removes its invalid styling.
-         * @param {HTMLElement} errorElement - The error message paragraph element.
-         * @param {HTMLElement} inputElement - The associated input/select element.
-         */
         function hideError(errorElement, inputElement) {
             errorElement.classList.add('hidden');
             inputElement.classList.remove('border-red-500');
-            inputElement.classList.add('border-gray-600');
         }
 
-        /**
-         * Shows an error message element and applies invalid styling.
-         * @param {HTMLElement} errorElement - The error message paragraph element.
-         * @param {HTMLElement} inputElement - The associated input/select element.
-         * @param {string} message - The error message to display.
-         */
         function showError(errorElement, inputElement, message) {
             errorElement.textContent = message;
             errorElement.classList.remove('hidden');
             inputElement.classList.add('border-red-500');
-            inputElement.classList.remove('border-gray-600');
         }
 
-
         // --- Local Storage Functions ---
-        /**
-         * Saves the current time entries, goals, projects, and active tracking state to local storage.
-         */
         function saveToLocalStorage() {
             try {
                 localStorage.setItem('timeTrackerEntries', JSON.stringify(timeEntries));
                 localStorage.setItem('timeTrackerGoals', JSON.stringify(goals));
-                localStorage.setItem('timeTrackerProjects', JSON.stringify(projects)); // Save projects
-                // Also save current tracking state if any
+                localStorage.setItem('timeTrackerProjects', JSON.stringify(projects));
                 if (currentTask) {
-                    localStorage.setItem('currentTrackingState', JSON.stringify({
-                        task: currentTask.task,
-                        projectId: currentTask.projectId, // Save project ID
-                        projectName: currentTask.projectName, // Save project name
-                        startTime: startTime.toISOString(),
-                        id: currentTask.id
-                    }));
+                    localStorage.setItem('currentTrackingState', JSON.stringify({ ...currentTask, startTime: startTime.toISOString() }));
                 } else {
-                    localStorage.removeItem('currentTrackingState'); // Clear state if no task is running
+                    localStorage.removeItem('currentTrackingState');
                 }
             } catch (e) {
                 console.error("Error saving to local storage:", e);
-                showToast("Failed to save data. Local storage might be full or unavailable.", 'error');
+                showToast("Failed to save data.", 'error');
             }
         }
 
-        /**
-         * Loads time entries, goals, projects, and active tracking state from local storage.
-         */
         function loadFromLocalStorage() {
             try {
-                const storedEntries = localStorage.getItem('timeTrackerEntries');
-                if (storedEntries) {
-                    timeEntries = JSON.parse(storedEntries);
-                }
-                const storedGoals = localStorage.getItem('timeTrackerGoals');
-                if (storedGoals) {
-                    goals = JSON.parse(storedGoals);
-                }
-                const storedProjects = localStorage.getItem('timeTrackerProjects'); // Load projects
-                if (storedProjects) {
-                    projects = JSON.parse(storedProjects);
-                }
-
-                const storedTrackingState = localStorage.getItem('currentTrackingState');
-                if (storedTrackingState) {
-                    const state = JSON.parse(storedTrackingState);
+                timeEntries = JSON.parse(localStorage.getItem('timeTrackerEntries')) || [];
+                goals = JSON.parse(localStorage.getItem('timeTrackerGoals')) || [];
+                projects = JSON.parse(localStorage.getItem('timeTrackerProjects')) || [];
+                const state = JSON.parse(localStorage.getItem('currentTrackingState'));
+                if (state) {
                     startTime = new Date(state.startTime);
-                    currentTask = {
-                        id: state.id,
-                        task: state.task,
-                        projectId: state.projectId,
-                        projectName: state.projectName
-                    };
-                    startTimerDisplay(); // Resume timer display
+                    currentTask = { id: state.id, task: state.task, projectId: state.projectId, projectName: state.projectName };
+                    startTimerDisplay();
                     taskInput.value = state.task;
-                    projectSelect.value = state.projectId || ''; // Select the project
-                    playPauseIcon.classList.remove('fa-play');
-                    playPauseIcon.classList.add('fa-pause');
-                    taskInput.disabled = true; // Disable input while tracking
-                    projectSelect.disabled = true; // Disable project select while tracking
+                    projectSelect.value = state.projectId || '';
+                    playPauseIcon.classList.replace('fa-play', 'fa-pause');
+                    taskInput.disabled = true;
+                    projectSelect.disabled = true;
                 }
             } catch (e) {
                 console.error("Error loading from local storage:", e);
-                showToast("Failed to load data. Your saved data might be corrupted.", 'error');
+                showToast("Failed to load data.", 'error');
             }
         }
 
         // --- Time Formatting and Calculations ---
-        /**
-         * Formats a duration in milliseconds into HH:MM:SS string format.
-         * @param {number} ms - Duration in milliseconds.
-         * @returns {string} Formatted time string.
-         */
         function formatTime(ms) {
             const totalSeconds = Math.floor(ms / 1000);
-            const hours = Math.floor(totalSeconds / 3600);
-            const minutes = Math.floor((totalSeconds % 3600) / 60);
-            const seconds = totalSeconds % 60;
-            return [hours, minutes, seconds]
-                .map(unit => String(unit).padStart(2, '0'))
-                .join(':');
+            const h = Math.floor(totalSeconds / 3600);
+            const m = Math.floor((totalSeconds % 3600) / 60);
+            const s = totalSeconds % 60;
+            return [h, m, s].map(u => String(u).padStart(2, '0')).join(':');
         }
 
-        /**
-         * Checks if two Date objects represent the same calendar day.
-         * @param {Date} d1 - First date.
-         * @param {Date} d2 - Second date.
-         * @returns {boolean} True if dates are on the same day, false otherwise.
-         */
         function isSameDay(d1, d2) {
-            return d1.getFullYear() === d2.getFullYear() &&
-                   d1.getMonth() === d2.getMonth() &&
-                   d1.getDate() === d2.getDate();
+            return d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth() && d1.getDate() === d2.getDate();
         }
 
-        /**
-         * Calculates the start of the week (Monday) for a given date.
-         * @param {Date} date - The date to find the start of the week for.
-         * @returns {Date} A new Date object representing the Monday of that week at 00:00:00.
-         */
         function getStartOfWeek(date) {
             const d = new Date(date);
-            const day = d.getDay(); // Sunday - Saturday : 0 - 6
-            // Adjust to Monday (1) for consistent week start. If day is Sunday (0), subtract 6 days.
-            // Otherwise, subtract (day - 1) days.
+            const day = d.getDay();
             const diff = d.getDate() - day + (day === 0 ? -6 : 1);
             d.setDate(diff);
-            d.setHours(0, 0, 0, 0); // Set to start of the day
+            d.setHours(0, 0, 0, 0);
             return d;
         }
 
-        /**
-         * Checks if two Date objects fall within the same calendar week (Monday to Sunday).
-         * @param {Date} d1 - First date.
-         * @param {Date} d2 - Second date.
-         * @returns {boolean} True if dates are in the same week, false otherwise.
-         */
         function isSameWeek(d1, d2) {
-            const startOfWeek1 = getStartOfWeek(d1);
-            const startOfWeek2 = getStartOfWeek(d2);
-            return isSameDay(startOfWeek1, startOfWeek2);
+            return isSameDay(getStartOfWeek(d1), getStartOfWeek(d2));
         }
 
-        /**
-         * Calculates the start of the month for a given date.
-         * @param {Date} date - The date to find the start of the month for.
-         * @returns {Date} A new Date object representing the first day of that month at 00:00:00.
-         */
-        function getStartOfMonth(date) {
-            const d = new Date(date);
-            d.setDate(1); // Set to the first day of the month
-            d.setHours(0, 0, 0, 0); // Set to start of the day
-            return d;
-        }
-
-        /**
-         * Checks if two Date objects fall within the same calendar month.
-         * @param {Date} d1 - First date.
-         * @param {Date} d2 - Second date.
-         * @returns {boolean} True if dates are in the same month, false otherwise.
-         */
         function isSameMonth(d1, d2) {
-            return d1.getFullYear() === d2.getFullYear() &&
-                   d1.getMonth() === d2.getMonth();
+            return d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth();
         }
 
-        /**
-         * Formats a Date object into a readable string (e.g., "July 3, 2025").
-         * If the date is today, it returns "Today".
-         * @param {Date} date - The date to format.
-         * @returns {string} Formatted date string.
-         */
         function formatDateForDisplay(date) {
-            const today = new Date();
-            if (isSameDay(date, today)) {
-                return "Today";
-            }
+            if (isSameDay(date, new Date())) return "Today";
             return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
         }
 
-
         // --- Render Functions ---
-        /**
-         * Renders the time entries for the `currentDisplayedDate` in the task list.
-         * Sorts entries by most recent first.
-         */
-        function renderEntries() {
-            // Filter entries for the currentDisplayedDate
-            const entriesForDisplay = timeEntries.filter(entry => entry.startTime && isSameDay(new Date(entry.startTime), currentDisplayedDate));
-            entriesForDisplay.sort((a, b) => new Date(b.startTime) - new Date(a.startTime)); // Sort by most recent first
-
-            taskList.innerHTML = ''; // Clear existing entries
-            if (entriesForDisplay.length === 0) {
-                noEntriesMessage.style.display = 'block';
-            } else {
-                noEntriesMessage.style.display = 'none';
-                entriesForDisplay.forEach(entry => {
-                    const start = new Date(entry.startTime);
-                    const end = entry.endTime ? new Date(entry.endTime) : null;
-                    const duration = entry.durationMs;
-
-                    const entryDiv = document.createElement('div');
-                    entryDiv.className = 'task-entry';
-                    entryDiv.innerHTML = `
-                        <div class="task-entry-details">
-                            <div class="task-entry-description">${entry.task}</div>
-                            <div class="text-xs text-gray-500">${entry.projectName ? `Project: ${entry.projectName}` : 'No Project'}</div>
-                            <div class="task-entry-times">
-                                ${start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                                ${end ? ` - ${end.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : ''}
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="task-entry-duration">${formatTime(duration)}</div>
-                            <button class="text-gray-400 hover:text-blue-400" onclick="openEditTimeEntryModal('${entry.id}')" aria-label="Edit Time Entry">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                            <button class="text-red-400 hover:text-red-600" onclick="deleteEntry('${entry.id}')" aria-label="Delete Time Entry">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    `;
-                    taskList.appendChild(entryDiv);
-                });
-            }
-            // Update the displayed date in the task list header
-            currentViewDateDisplay.textContent = formatDateForDisplay(currentDisplayedDate);
-            currentViewDateDisplayHeader.textContent = formatDateForDisplay(currentDisplayedDate); // Update header
-            updateTotals(); // Update global totals (always for today/this week)
+        function rerenderAll() {
+            renderProjects(); // Must be first to populate selects
+            renderEntries();
+            renderGoals();
+            updateTotals();
         }
 
-        /**
-         * Calculates and updates the total time tracked for the actual current day and this week.
-         */
+        function renderEntries() {
+            const entriesForDisplay = timeEntries
+                .filter(entry => entry.startTime && isSameDay(new Date(entry.startTime), currentDisplayedDate))
+                .sort((a, b) => new Date(b.startTime) - new Date(a.startTime));
+
+            taskList.innerHTML = '';
+            noEntriesMessage.style.display = entriesForDisplay.length === 0 ? 'block' : 'none';
+
+            entriesForDisplay.forEach(entry => {
+                const start = new Date(entry.startTime);
+                const end = entry.endTime ? new Date(entry.endTime) : null;
+                const entryDiv = document.createElement('div');
+                entryDiv.className = 'task-entry';
+                entryDiv.innerHTML = `
+                    <div class="task-entry-details">
+                        <div class="task-entry-description">${entry.task}</div>
+                        <div class="text-xs text-gray-500">${entry.projectName ? `Project: ${entry.projectName}` : 'No Project'}</div>
+                        <div class="task-entry-times">
+                            ${start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                            ${end ? ` - ${end.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : ''}
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="task-entry-duration">${formatTime(entry.durationMs)}</div>
+                        <button class="text-gray-400 hover:text-blue-400" onclick="openEditTimeEntryModal('${entry.id}')" aria-label="Edit Time Entry"><i class="fas fa-pencil-alt"></i></button>
+                        <button class="text-red-400 hover:text-red-600" onclick="deleteEntry('${entry.id}')" aria-label="Delete Time Entry"><i class="fas fa-trash-alt"></i></button>
+                    </div>`;
+                taskList.appendChild(entryDiv);
+            });
+            const dateStr = formatDateForDisplay(currentDisplayedDate);
+            currentViewDateDisplay.textContent = dateStr;
+            currentViewDateDisplayHeader.textContent = dateStr;
+        }
+
         function updateTotals() {
             const today = new Date();
             let totalTodayMs = 0;
             let totalWeekMs = 0;
-
             timeEntries.forEach(entry => {
-                // Ensure entry has a valid startTime and durationMs before calculation
                 if (entry.startTime && typeof entry.durationMs === 'number') {
-                    const entryStartTime = new Date(entry.startTime);
-                    if (isSameDay(entryStartTime, today)) {
-                        totalTodayMs += entry.durationMs;
-                    }
-                    if (isSameWeek(entryStartTime, today)) {
-                        totalWeekMs += entry.durationMs;
-                    }
+                    const entryDate = new Date(entry.startTime);
+                    if (isSameDay(entryDate, today)) totalTodayMs += entry.durationMs;
+                    if (isSameWeek(entryDate, today)) totalWeekMs += entry.durationMs;
                 }
             });
-
             todayTotalDisplay.textContent = formatTime(totalTodayMs);
             weekTotalDisplay.textContent = formatTime(totalWeekMs);
         }
 
-        /**
-         * Renders the list of goals, including their progress circles.
-         */
         function renderGoals() {
-            goalsList.innerHTML = ''; // Clear existing goals
-            if (goals.length === 0) {
-                noGoalsMessage.style.display = 'block';
-            } else {
-                noGoalsMessage.style.display = 'none';
-                goals.forEach(goal => {
-                    // Check if the goal period needs to be reset
-                    const now = new Date();
-                    const lastReset = new Date(goal.lastResetDate);
-                    let shouldReset = false;
+            goalsList.innerHTML = '';
+            noGoalsMessage.style.display = goals.length === 0 ? 'block' : 'none';
+            goals.forEach(goal => {
+                const now = new Date();
+                const lastReset = new Date(goal.lastResetDate);
+                let shouldReset = (goal.frequency === 'day' && !isSameDay(now, lastReset)) ||
+                                  (goal.frequency === 'week' && !isSameWeek(now, lastReset)) ||
+                                  (goal.frequency === 'month' && !isSameMonth(now, lastReset));
+                if (shouldReset) {
+                    goal.currentMs = 0;
+                    goal.lastResetDate = now.toISOString();
+                }
 
-                    if (goal.frequency === 'day' && !isSameDay(now, lastReset)) {
-                        shouldReset = true;
-                    } else if (goal.frequency === 'week' && !isSameWeek(now, lastReset)) {
-                        shouldReset = true;
-                    } else if (goal.frequency === 'month' && !isSameMonth(now, lastReset)) {
-                        shouldReset = true;
-                    }
-
-                    if (shouldReset) {
-                        goal.currentMs = 0;
-                        goal.lastResetDate = now.toISOString();
-                        saveToLocalStorage(); // Save updated goal state immediately
-                    }
-
-                    // Check for end date
-                    if (goal.endDate && now > new Date(goal.endDate)) {
-                        // Goal has ended, could mark as completed or remove
-                        // For now, let's just indicate it's ended.
-                    }
-
-                    const progressPercentage = Math.min(100, (goal.currentMs / goal.targetMs) * 100 || 0);
-                    const goalDiv = document.createElement('div');
-                    goalDiv.className = 'goal-item';
-                    goalDiv.innerHTML = `
-                        <div class="goal-progress-circle" style="--progress: ${progressPercentage}%">
-                            <span>${Math.round(progressPercentage)}%</span>
+                const progress = Math.min(100, (goal.currentMs / goal.targetMs) * 100 || 0);
+                const isEnded = goal.endDate && now > new Date(goal.endDate);
+                const goalDiv = document.createElement('div');
+                goalDiv.className = 'goal-item';
+                goalDiv.innerHTML = `
+                    <div class="goal-progress-circle" style="--progress: ${progress}%">
+                        <span>${Math.round(progress)}%</span>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="font-semibold">${goal.name}</div>
+                        <div class="text-sm text-gray-400">
+                            ${goal.projectName ? `Project: ${goal.projectName}<br>` : ''}
+                            ${formatTime(goal.currentMs)} / ${formatTime(goal.targetMs)} ${goal.frequency}
+                            ${goal.endDate ? ` (Until: ${new Date(goal.endDate).toLocaleDateString()})` : ''}
+                            ${isEnded ? ' <span class="text-red-400">(Ended)</span>' : ''}
                         </div>
-                        <div class="flex-grow">
-                            <div class="font-semibold">${goal.name}</div>
-                            <div class="text-sm text-gray-400">
-                                ${goal.projectName ? `Project: ${goal.projectName}<br>` : ''}
-                                ${formatTime(goal.currentMs)} / ${formatTime(goal.targetMs)} ${goal.frequency}
-                                ${goal.endDate ? ` (Until: ${new Date(goal.endDate).toLocaleDateString()})` : ''}
-                                ${goal.endDate && now > new Date(goal.endDate) ? ' <span class="text-red-400">(Ended)</span>' : ''}
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <button class="text-gray-400 hover:text-blue-400" onclick="openEditGoalModal('${goal.id}')" aria-label="Edit Goal">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                            <button class="text-red-400 hover:text-red-600" onclick="deleteGoal('${goal.id}')" aria-label="Delete Goal">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    `;
-                    goalsList.appendChild(goalDiv);
-                });
-            }
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button class="text-gray-400 hover:text-blue-400" onclick="openEditGoalModal('${goal.id}')" aria-label="Edit Goal"><i class="fas fa-pencil-alt"></i></button>
+                        <button class="text-red-400 hover:text-red-600" onclick="deleteGoal('${goal.id}')" aria-label="Delete Goal"><i class="fas fa-trash-alt"></i></button>
+                    </div>`;
+                goalsList.appendChild(goalDiv);
+            });
         }
 
-        /**
-         * Renders the list of projects, including their total tracked time.
-         */
         function renderProjects() {
-            projectsList.innerHTML = ''; // Clear existing projects
-            if (projects.length === 0) {
-                noProjectsMessage.style.display = 'block';
-            } else {
-                noProjectsMessage.style.display = 'none';
-                projects.forEach(project => {
-                    // Calculate total time for this project
-                    const projectTotalMs = timeEntries.reduce((sum, entry) => {
-                        return entry.projectId === project.id ? sum + entry.durationMs : sum;
-                    }, 0);
-
-                    const projectDiv = document.createElement('div');
-                    projectDiv.className = 'project-item';
-                    projectDiv.innerHTML = `
-                        <div class="flex-grow">
-                            <div class="font-semibold">${project.name}</div>
-                            <div class="text-sm text-gray-400">Total: ${formatTime(projectTotalMs)}</div>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <button class="text-gray-400 hover:text-blue-400" onclick="openEditProjectModal('${project.id}')" aria-label="Edit Project">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                            <button class="text-red-400 hover:text-red-600" onclick="deleteProject('${project.id}')" aria-label="Delete Project">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    `;
-                    projectsList.appendChild(projectDiv);
-                });
-            }
-            populateProjectSelects(); // Update project dropdowns after rendering projects
+            projectsList.innerHTML = '';
+            noProjectsMessage.style.display = projects.length === 0 ? 'block' : 'none';
+            projects.forEach(project => {
+                const totalMs = timeEntries.reduce((sum, entry) => entry.projectId === project.id ? sum + entry.durationMs : sum, 0);
+                const projectDiv = document.createElement('div');
+                projectDiv.className = 'project-item';
+                projectDiv.innerHTML = `
+                    <div class="flex-grow">
+                        <div class="font-semibold">${project.name}</div>
+                        <div class="text-sm text-gray-400">Total: ${formatTime(totalMs)}</div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button class="text-gray-400 hover:text-blue-400" onclick="openEditProjectModal('${project.id}')" aria-label="Edit Project"><i class="fas fa-pencil-alt"></i></button>
+                        <button class="text-red-400 hover:text-red-600" onclick="deleteProject('${project.id}')" aria-label="Delete Project"><i class="fas fa-trash-alt"></i></button>
+                    </div>`;
+                projectsList.appendChild(projectDiv);
+            });
+            populateProjectSelects();
         }
 
-        /**
-         * Populates the project dropdowns in the top bar, goal modal, and report modal.
-         */
         function populateProjectSelects() {
-            // Clear existing options, keep the default "Select Project"
-            projectSelect.innerHTML = '<option value="">Select Project (Optional)</option>';
-            goalProjectSelect.innerHTML = '<option value="">Select Project (Optional)</option>';
-            reportProjectSelect.innerHTML = '<option value="">All Projects</option>'; // For reports
-            editTimeEntryProjectSelect.innerHTML = '<option value="">Select Project (Optional)</option>'; // For edit time entry modal
-            editGoalProjectSelect.innerHTML = '<option value="">Select Project (Optional)</option>'; // For edit goal modal
-
-
-            projects.forEach(project => {
-                const option1 = document.createElement('option');
-                option1.value = project.id;
-                option1.textContent = project.name;
-                projectSelect.appendChild(option1);
-
-                const option2 = document.createElement('option');
-                option2.value = project.id;
-                option2.textContent = project.name;
-                goalProjectSelect.appendChild(option2);
-
-                const option3 = document.createElement('option');
-                option3.value = project.id;
-                option3.textContent = project.name;
-                reportProjectSelect.appendChild(option3);
-
-                const option4 = document.createElement('option');
-                option4.value = project.id;
-                option4.textContent = project.name;
-                editTimeEntryProjectSelect.appendChild(option4);
-
-                const option5 = document.createElement('option');
-                option5.value = project.id;
-                option5.textContent = project.name;
-                editGoalProjectSelect.appendChild(option5);
+            const selects = [projectSelect, goalProjectSelect, reportProjectSelect, editTimeEntryProjectSelect, editGoalProjectSelect];
+            const currentProjectId = projectSelect.value;
+            
+            selects.forEach(sel => {
+                const firstOption = sel.options[0];
+                sel.innerHTML = '';
+                sel.appendChild(firstOption);
             });
 
-            // Re-select the project if one was active when loading from local storage
-            if (currentTask && currentTask.projectId) {
-                projectSelect.value = currentTask.projectId;
-            }
+            projects.forEach(project => {
+                const option = new Option(project.name, project.id);
+                selects.forEach(sel => sel.add(option.cloneNode(true)));
+            });
+            projectSelect.value = currentProjectId;
         }
 
         // --- Time Tracking Logic ---
-        /**
-         * Starts or resumes the visual timer display.
-         */
         function startTimerDisplay() {
-            if (timerInterval) clearInterval(timerInterval); // Clear any existing interval
+            if (timerInterval) clearInterval(timerInterval);
             timerInterval = setInterval(() => {
-                if (startTime) {
-                    const elapsedMs = new Date().getTime() - startTime.getTime();
-                    timerDisplay.textContent = formatTime(elapsedMs);
-                }
+                if (startTime) timerDisplay.textContent = formatTime(new Date().getTime() - startTime.getTime());
             }, 1000);
         }
 
         playPauseButton.addEventListener('click', () => {
-            if (!currentTask) { // Start a new task if no task is currently being tracked
-                const selectedProjectId = projectSelect.value || null; // Make project optional
-                const selectedProjectName = selectedProjectId ? projectSelect.options[projectSelect.selectedIndex].text : null;
+            if (!currentTask) { // Start
                 const taskDescription = taskInput.value.trim();
-
                 if (!taskDescription) {
-                    showToast("Please enter a task description before starting.", 'error');
+                    showToast("Please enter a task description.", 'error');
                     return;
                 }
-
+                const selectedProjectId = projectSelect.value || null;
+                const selectedProjectName = selectedProjectId ? projectSelect.options[projectSelect.selectedIndex].text : null;
                 startTime = new Date();
-                const newId = Date.now().toString(); // Simple unique ID for the new entry
                 currentTask = {
-                    id: newId,
+                    id: Date.now().toString(),
                     task: taskDescription,
                     projectId: selectedProjectId,
                     projectName: selectedProjectName,
-                    startTime: startTime.toISOString(), // Store as ISO string for consistent date parsing
-                    endTime: null, // Null until stopped
-                    durationMs: 0 // Initial duration
+                    startTime: startTime.toISOString(),
+                    endTime: null,
+                    durationMs: 0
                 };
-                timeEntries.push(currentTask); // Add to the array of entries
-                playPauseIcon.classList.remove('fa-play');
-                playPauseIcon.classList.add('fa-pause');
-                taskInput.disabled = true; // Disable input while tracking
-                projectSelect.disabled = true; // Disable project select while tracking
-                startTimerDisplay(); // Start updating the timer display
+                timeEntries.push(currentTask);
+                playPauseIcon.classList.replace('fa-play', 'fa-pause');
+                taskInput.disabled = true;
+                projectSelect.disabled = true;
+                startTimerDisplay();
                 showToast("Timer started!", 'success');
-            } else { // Pause/Stop current task
-                clearInterval(timerInterval); // Stop the visual timer
+            } else { // Stop
+                clearInterval(timerInterval);
                 timerInterval = null;
-                playPauseIcon.classList.remove('fa-pause');
-                playPauseIcon.classList.add('fa-play');
-                taskInput.disabled = false; // Re-enable input
-                projectSelect.disabled = false; // Re-enable project select
-
                 const endTime = new Date();
                 const elapsedMs = endTime.getTime() - startTime.getTime();
-
-                // Find and update the current task in the timeEntries array
-                const index = timeEntries.findIndex(entry => entry.id === currentTask.id);
+                const index = timeEntries.findIndex(e => e.id === currentTask.id);
                 if (index !== -1) {
                     timeEntries[index].endTime = endTime.toISOString();
                     timeEntries[index].durationMs = elapsedMs;
                 }
-
-                // Update goal progress based on the just-completed task
-                updateGoalProgress(currentTask.projectId, elapsedMs); // Pass project ID
-
-                // Reset current task state for the next tracking session
+                updateGoalProgress(currentTask.projectId, elapsedMs);
                 currentTask = null;
                 startTime = null;
-                timerDisplay.textContent = '0:00:00'; // Reset timer display
-                taskInput.value = ''; // Clear task input
-                projectSelect.value = ''; // Reset project select
+                timerDisplay.textContent = '0:00:00';
+                taskInput.value = '';
+                projectSelect.value = '';
+                playPauseIcon.classList.replace('fa-pause', 'fa-play');
+                taskInput.disabled = false;
+                projectSelect.disabled = false;
                 showToast("Timer stopped!", 'success');
             }
-            saveToLocalStorage(); // Save all data after any change
-            renderEntries(); // Re-render entries to reflect changes
-            renderGoals(); // Re-render goals to reflect progress
-            renderProjects(); // Re-render projects to update totals
+            saveToLocalStorage();
+            rerenderAll();
         });
 
         // --- Date Navigation Logic ---
@@ -1538,265 +1295,147 @@
             currentDisplayedDate.setDate(currentDisplayedDate.getDate() - 1);
             renderEntries();
         });
-
         nextDateBtn.addEventListener('click', () => {
             currentDisplayedDate.setDate(currentDisplayedDate.getDate() + 1);
             renderEntries();
         });
-
         goToTodayBtn.addEventListener('click', () => {
-            currentDisplayedDate = new Date(); // Reset to today
+            currentDisplayedDate = new Date();
             renderEntries();
         });
 
-        // --- Create Goal Modal Logic ---
+        // --- Goal Modal Logic ---
         openCreateGoalModalBtn.addEventListener('click', () => {
-            // Reset modal fields before opening
             goalNameInput.value = '';
-            hideError(goalNameError, goalNameInput);
             forHoursInput.value = '';
-            hideError(forHoursError, forHoursInput);
-            forFrequencySelect.value = 'day';
+            forMinutesInput.value = '';
             untilDateInput.value = '';
-            hideError(untilDateError, untilDateInput);
             noEndDateCheckbox.checked = false;
-            untilDateInput.disabled = false; // Ensure date input is enabled by default
-            goalProjectSelect.value = ''; // Reset project selection in goal modal
-
-            createGoalModal.classList.remove('hidden');
-            createGoalModal.classList.add('flex'); // Show modal
-            setFocusToFirstElement(createGoalModal);
+            untilDateInput.disabled = false;
+            goalProjectSelect.value = '';
+            hideError(goalNameError, goalNameInput);
+            hideError(forTimeError, forHoursInput);
+            hideError(forTimeError, forMinutesInput);
+            hideError(untilDateError, untilDateInput);
+            toggleModal(createGoalModal, true);
         });
 
-        closeCreateGoalModalBtn.addEventListener('click', () => {
-            createGoalModal.classList.add('hidden'); // Hide modal
-            createGoalModal.classList.remove('flex');
-        });
-
-        cancelGoalBtn.addEventListener('click', () => {
-            createGoalModal.classList.add('hidden'); // Hide modal
-            createGoalModal.classList.remove('flex');
-        });
-
+        closeCreateGoalModalBtn.addEventListener('click', () => toggleModal(createGoalModal, false));
+        cancelGoalBtn.addEventListener('click', () => toggleModal(createGoalModal, false));
         noEndDateCheckbox.addEventListener('change', () => {
             untilDateInput.disabled = noEndDateCheckbox.checked;
             if (noEndDateCheckbox.checked) {
-                untilDateInput.value = ''; // Clear date if no end date is selected
-                hideError(untilDateError, untilDateInput); // Hide error if checkbox is checked
+                untilDateInput.value = '';
+                hideError(untilDateError, untilDateInput);
             }
         });
 
         createGoalBtnModal.addEventListener('click', () => {
             const goalName = goalNameInput.value.trim();
-            const targetHours = parseFloat(forHoursInput.value);
-            const frequency = forFrequencySelect.value;
+            const targetHours = parseInt(forHoursInput.value, 10) || 0;
+            const targetMinutes = parseInt(forMinutesInput.value, 10) || 0;
+            const totalTargetMs = (targetHours * 3600 + targetMinutes * 60) * 1000;
             const endDate = noEndDateCheckbox.checked ? null : untilDateInput.value;
-            const selectedGoalProjectId = goalProjectSelect.value || null; // Make project optional for goals
-            const selectedGoalProjectName = selectedGoalProjectId ? goalProjectSelect.options[goalProjectSelect.selectedIndex].text : null;
-
             let isValid = true;
 
-            if (!goalName) {
-                showError(goalNameError, goalNameInput, "Goal name is required.");
-                isValid = false;
-            } else {
-                hideError(goalNameError, goalNameInput);
-            }
+            if (!goalName) { showError(goalNameError, goalNameInput, "Goal name is required."); isValid = false; } 
+            else { hideError(goalNameError, goalNameInput); }
+            if (totalTargetMs <= 0) { showError(forTimeError, forHoursInput, "Enter a positive time."); showError(forTimeError, forMinutesInput, ""); isValid = false; } 
+            else { hideError(forTimeError, forHoursInput); hideError(forTimeError, forMinutesInput); }
+            if (!noEndDateCheckbox.checked && !endDate) { showError(untilDateError, untilDateInput, "Select an end date or check 'No end date'."); isValid = false; } 
+            else { hideError(untilDateError, untilDateInput); }
+            if (!isValid) return;
 
-            if (isNaN(targetHours) || targetHours <= 0) {
-                showError(forHoursError, forHoursInput, "Enter a positive number for hours.");
-                isValid = false;
-            } else {
-                hideError(forHoursError, forHoursInput);
-            }
-
-            if (!noEndDateCheckbox.checked && !endDate) {
-                showError(untilDateError, untilDateInput, "Select an end date or check 'No end date'.");
-                isValid = false;
-            } else {
-                hideError(untilDateError, untilDateInput);
-            }
-
-            if (!isValid) {
-                return;
-            }
-
-            const newGoal = {
+            const selectedGoalProjectId = goalProjectSelect.value || null;
+            const selectedGoalProjectName = selectedGoalProjectId ? goalProjectSelect.options[goalProjectSelect.selectedIndex].text : null;
+            goals.push({
                 id: Date.now().toString(),
                 name: goalName,
-                targetMs: targetHours * 3600 * 1000, // Convert hours to milliseconds
-                frequency: frequency,
-                endDate: endDate, // Store as ISO string 'YYYY-MM-DD'
+                targetMs: totalTargetMs,
+                frequency: forFrequencySelect.value,
+                endDate: endDate,
                 currentMs: 0,
-                lastResetDate: new Date().toISOString(), // Initialize with current date
-                projectId: selectedGoalProjectId, // Store project ID or null
-                projectName: selectedGoalProjectName // Store project name or null
-            };
-            goals.push(newGoal);
+                lastResetDate: new Date().toISOString(),
+                projectId: selectedGoalProjectId,
+                projectName: selectedGoalProjectName
+            });
             saveToLocalStorage();
-            renderGoals();
-            createGoalModal.classList.add('hidden'); // Hide modal
-            createGoalModal.classList.remove('flex');
+            rerenderAll();
+            toggleModal(createGoalModal, false);
             showToast("Goal created successfully!", 'success');
         });
 
-
-        /**
-         * Updates the progress of relevant goals based on a completed task.
-         * @param {string | null} completedProjectId - The ID of the project the task belonged to (can be null).
-         * @param {number} durationMs - The duration of the completed task in milliseconds.
-         */
         function updateGoalProgress(completedProjectId, durationMs) {
             goals.forEach(goal => {
-                // Update goal if it's not linked to a specific project (null projectId)
-                // OR if it is linked to a project AND that project matches the completedProjectId
                 if ((!goal.projectId && completedProjectId === null) || (goal.projectId && goal.projectId === completedProjectId)) {
-                    const now = new Date();
-                    const lastReset = new Date(goal.lastResetDate);
-                    let shouldReset = false;
-
-                    if (goal.frequency === 'day' && !isSameDay(now, lastReset)) {
-                        shouldReset = true;
-                    } else if (goal.frequency === 'week' && !isSameWeek(now, lastReset)) {
-                        shouldReset = true;
-                    } else if (goal.frequency === 'month' && !isSameMonth(now, lastReset)) {
-                        shouldReset = true;
-                    }
-
-                    if (shouldReset) {
-                        goal.currentMs = 0;
-                        goal.lastResetDate = now.toISOString();
-                    }
-
-                    // Add duration if goal has not ended
-                    if (!goal.endDate || now <= new Date(goal.endDate)) {
+                    if (!goal.endDate || new Date() <= new Date(goal.endDate)) {
                         goal.currentMs += durationMs;
                     }
                 }
             });
-            saveToLocalStorage(); // Save updated goals progress
+            saveToLocalStorage();
         }
 
-        // --- Create Project Modal Logic ---
+        // --- Project Modal Logic ---
         openCreateProjectModalBtn.addEventListener('click', () => {
-            projectNameInput.value = ''; // Clear input
+            projectNameInput.value = '';
             hideError(projectNameError, projectNameInput);
-            createProjectModal.classList.remove('hidden');
-            createProjectModal.classList.add('flex');
-            setFocusToFirstElement(createProjectModal);
+            toggleModal(createProjectModal, true);
         });
-
-        closeCreateProjectModalBtn.addEventListener('click', () => {
-            createProjectModal.classList.add('hidden');
-            createProjectModal.classList.remove('flex');
-        });
-
-        cancelProjectBtn.addEventListener('click', () => {
-            createProjectModal.classList.add('hidden');
-            createProjectModal.classList.remove('flex');
-        });
-
+        closeCreateProjectModalBtn.addEventListener('click', () => toggleModal(createProjectModal, false));
+        cancelProjectBtn.addEventListener('click', () => toggleModal(createProjectModal, false));
         createProjectBtnModal.addEventListener('click', () => {
             const projectName = projectNameInput.value.trim();
-            let isValid = true;
-
             if (!projectName) {
                 showError(projectNameError, projectNameInput, "Project name is required.");
-                isValid = false;
-            } else {
-                hideError(projectNameError, projectNameInput);
-            }
-
-            // Check for duplicate project names
-            if (projects.some(p => p.name.toLowerCase() === projectName.toLowerCase())) {
-                showError(projectNameError, projectNameInput, "A project with this name already exists.");
-                isValid = false;
-            }
-
-            if (!isValid) {
                 return;
             }
-
-            const newProject = {
-                id: Date.now().toString(), // Simple unique ID
-                name: projectName
-            };
-            projects.push(newProject);
+            if (projects.some(p => p.name.toLowerCase() === projectName.toLowerCase())) {
+                showError(projectNameError, projectNameInput, "A project with this name already exists.");
+                return;
+            }
+            projects.push({ id: Date.now().toString(), name: projectName });
             saveToLocalStorage();
-            renderProjects(); // Re-render projects list and dropdowns
-            createProjectModal.classList.add('hidden');
-            createProjectModal.classList.remove('flex');
+            rerenderAll();
+            toggleModal(createProjectModal, false);
             showToast("Project created successfully!", 'success');
         });
 
         // --- Advanced Report Modal Logic ---
         openAdvancedReportModalBtn.addEventListener('click', () => {
-            // Reset report modal fields before opening
             reportProjectSelect.value = '';
             reportStartDateInput.value = '';
             reportEndDateInput.value = '';
-            hideError(reportDateError, reportStartDateInput); // Clear potential date errors
-            hideError(reportDateError, reportEndDateInput);
+            hideError(reportDateError, reportStartDateInput);
             reportResultsList.innerHTML = '<p class="text-gray-400 text-center py-4">Generate a report to see results here.</p>';
             reportTotalDisplay.textContent = '0:00:00';
-
-            // Populate project select in report modal
-            populateProjectSelects();
-
-            advancedReportModal.classList.remove('hidden');
-            advancedReportModal.classList.add('flex');
-            setFocusToFirstElement(advancedReportModal);
+            toggleModal(advancedReportModal, true);
         });
-
-        closeReportModalBtn.addEventListener('click', () => {
-            advancedReportModal.classList.add('hidden');
-            advancedReportModal.classList.remove('flex');
-        });
-
+        closeReportModalBtn.addEventListener('click', () => toggleModal(advancedReportModal, false));
         generateReportBtn.addEventListener('click', () => {
             const filterProjectId = reportProjectSelect.value || null;
-            const startDateStr = reportStartDateInput.value;
-            const endDateStr = reportEndDateInput.value;
+            let startDate = reportStartDateInput.value ? new Date(reportStartDateInput.value) : null;
+            let endDate = reportEndDateInput.value ? new Date(reportEndDateInput.value) : null;
+            if (endDate) endDate.setHours(23, 59, 59, 999);
 
-            let startDate = startDateStr ? new Date(startDateStr) : null;
-            let endDate = endDateStr ? new Date(endDateStr) : null;
-
-            let isValid = true;
-            hideError(reportDateError, reportStartDateInput);
-            hideError(reportDateError, reportEndDateInput);
-
-
-            // Adjust end date to include the whole day
-            if (endDate) {
-                endDate.setHours(23, 59, 59, 999);
-            }
-
-            // Validate dates
             if (startDate && endDate && startDate > endDate) {
                 showError(reportDateError, reportStartDateInput, "Start date cannot be after end date.");
-                showError(reportDateError, reportEndDateInput, ""); // Apply red border to end date too
-                isValid = false;
-            }
-
-            if (!isValid) {
                 return;
+            } else {
+                hideError(reportDateError, reportStartDateInput);
             }
 
-            let filteredEntries = timeEntries.filter(entry => {
+            const filteredEntries = timeEntries.filter(entry => {
                 const entryDate = new Date(entry.startTime);
-                const matchesProject = !filterProjectId || entry.projectId === filterProjectId;
-                const matchesStartDate = !startDate || entryDate >= startDate;
-                const matchesEndDate = !endDate || entryDate <= endDate;
-                return matchesProject && matchesStartDate && matchesEndDate;
-            });
-
-            filteredEntries.sort((a, b) => new Date(b.startTime) - new Date(a.startTime)); // Sort by most recent first
-
+                return (!filterProjectId || entry.projectId === filterProjectId) &&
+                       (!startDate || entryDate >= startDate) &&
+                       (!endDate || entryDate <= endDate);
+            }).sort((a, b) => new Date(b.startTime) - new Date(a.startTime));
+            
             reportResultsList.innerHTML = '';
             let totalReportDurationMs = 0;
-
             if (filteredEntries.length === 0) {
-                reportResultsList.innerHTML = '<p class="text-gray-400 text-center py-4">No entries found for the selected criteria.</p>';
+                reportResultsList.innerHTML = '<p class="text-gray-400 text-center py-4">No entries found.</p>';
             } else {
                 filteredEntries.forEach(entry => {
                     totalReportDurationMs += entry.durationMs;
@@ -1805,16 +1444,12 @@
                     const entryDiv = document.createElement('div');
                     entryDiv.className = 'report-entry';
                     entryDiv.innerHTML = `
-                        <div class="report-entry-header">
-                            <span>${entry.task}</span>
-                            <span>${formatTime(entry.durationMs)}</span>
-                        </div>
+                        <div class="report-entry-header"><span>${entry.task}</span><span>${formatTime(entry.durationMs)}</span></div>
                         <div class="report-entry-details">
                             ${entry.projectName ? `Project: ${entry.projectName} | ` : ''}
                             ${start.toLocaleDateString()} ${start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                             ${end ? ` - ${end.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : ''}
-                        </div>
-                    `;
+                        </div>`;
                     reportResultsList.appendChild(entryDiv);
                 });
             }
@@ -1822,99 +1457,129 @@
             showToast("Report generated!", 'success');
         });
 
-
-        // --- Edit Time Entry Modal Logic ---
+        // --- Edit Modals ---
         window.openEditTimeEntryModal = function(id) {
             const entry = timeEntries.find(e => e.id === id);
             if (entry) {
                 editTimeEntryId.value = entry.id;
                 editTaskInput.value = entry.task;
-                hideError(editTaskError, editTaskInput); // Clear previous error
-                // Populate project select and set current value
-                populateProjectSelects(); // Ensure dropdown is up-to-date
                 editTimeEntryProjectSelect.value = entry.projectId || '';
-
-                editTimeEntryModal.classList.remove('hidden');
-                editTimeEntryModal.classList.add('flex');
-                setFocusToFirstElement(editTimeEntryModal);
+                hideError(editTaskError, editTaskInput);
+                toggleModal(editTimeEntryModal, true);
             }
         };
-
-        closeTimeEntryEditModalBtn.addEventListener('click', () => {
-            editTimeEntryModal.classList.add('hidden');
-            editTimeEntryModal.classList.remove('flex');
-        });
-
-        cancelTimeEntryEditBtn.addEventListener('click', () => {
-            editTimeEntryModal.classList.add('hidden');
-            editTimeEntryModal.classList.remove('flex');
-        });
-
         saveTimeEntryBtn.addEventListener('click', () => {
             const id = editTimeEntryId.value;
             const updatedTask = editTaskInput.value.trim();
-            const updatedProjectId = editTimeEntryProjectSelect.value || null;
-            const updatedProjectName = updatedProjectId ? editTimeEntryProjectSelect.options[editTimeEntryProjectSelect.selectedIndex].text : null;
-
-            let isValid = true;
-            if (!updatedTask) {
-                showError(editTaskError, editTaskInput, "Task description cannot be empty.");
-                isValid = false;
-            } else {
-                hideError(editTaskError, editTaskInput);
-            }
-
-            if (!isValid) {
-                return;
-            }
-
+            if (!updatedTask) { showError(editTaskError, editTaskInput, "Task description cannot be empty."); return; }
+            
             const index = timeEntries.findIndex(e => e.id === id);
             if (index !== -1) {
+                const updatedProjectId = editTimeEntryProjectSelect.value || null;
                 timeEntries[index].task = updatedTask;
                 timeEntries[index].projectId = updatedProjectId;
-                timeEntries[index].projectName = updatedProjectName;
+                timeEntries[index].projectName = updatedProjectId ? editTimeEntryProjectSelect.options[editTimeEntryProjectSelect.selectedIndex].text : null;
                 saveToLocalStorage();
-                renderEntries(); // Re-render to show updated entry
-                renderProjects(); // Re-render projects to ensure totals are correct
-                editTimeEntryModal.classList.add('hidden');
-                editTimeEntryModal.classList.remove('flex');
-                showToast("Time entry updated successfully!", 'success');
+                rerenderAll();
+                toggleModal(editTimeEntryModal, false);
+                showToast("Entry updated!", 'success');
             }
         });
 
-        // --- Edit Goal Modal Logic ---
         window.openEditGoalModal = function(id) {
             const goal = goals.find(g => g.id === id);
             if (goal) {
                 editGoalId.value = goal.id;
                 editGoalNameInput.value = goal.name;
-                hideError(editGoalNameError, editGoalNameInput); // Clear previous error
-                populateProjectSelects(); // Ensure project dropdown is up-to-date
                 editGoalProjectSelect.value = goal.projectId || '';
-                editForHoursInput.value = (goal.targetMs / 3600 / 1000).toFixed(1); // Convert ms to hours
-                hideError(editForHoursError, editForHoursInput); // Clear previous error
+                
+                const totalSeconds = goal.targetMs / 1000;
+                editForHoursInput.value = Math.floor(totalSeconds / 3600);
+                editForMinutesInput.value = Math.floor((totalSeconds % 3600) / 60);
+
                 editForFrequencySelect.value = goal.frequency;
                 editUntilDateInput.value = goal.endDate || '';
-                hideError(editUntilDateError, editUntilDateInput); // Clear previous error
                 editNoEndDateCheckbox.checked = !goal.endDate;
                 editUntilDateInput.disabled = !goal.endDate;
-
-                editGoalModal.classList.remove('hidden');
-                editGoalModal.classList.add('flex');
-                setFocusToFirstElement(editGoalModal);
+                
+                hideError(editGoalNameError, editGoalNameInput);
+                hideError(editForTimeError, editForHoursInput);
+                hideError(editForTimeError, editForMinutesInput);
+                hideError(editUntilDateError, editUntilDateInput);
+                toggleModal(editGoalModal, true);
             }
         };
+        saveGoalEditBtn.addEventListener('click', () => {
+            const id = editGoalId.value;
+            const updatedName = editGoalNameInput.value.trim();
+            const updatedHours = parseInt(editForHoursInput.value, 10) || 0;
+            const updatedMinutes = parseInt(editForMinutesInput.value, 10) || 0;
+            const updatedTargetMs = (updatedHours * 3600 + updatedMinutes * 60) * 1000;
+            const updatedEndDate = editNoEndDateCheckbox.checked ? null : editUntilDateInput.value;
+            let isValid = true;
+            
+            if (!updatedName) { showError(editGoalNameError, editGoalNameInput, "Goal name is required."); isValid = false; } 
+            else { hideError(editGoalNameError, editGoalNameInput); }
+            if (updatedTargetMs <= 0) { showError(editForTimeError, editForHoursInput, "Enter a positive time."); showError(editForTimeError, editForMinutesInput, ""); isValid = false; }
+            else { hideError(editForTimeError, editForHoursInput); hideError(editForTimeError, editForMinutesInput); }
+            if (!editNoEndDateCheckbox.checked && !updatedEndDate) { showError(editUntilDateError, editUntilDateInput, "Select an end date or check 'No end date'."); isValid = false; }
+            else { hideError(editUntilDateError, editUntilDateInput); }
+            if (!isValid) return;
 
-        closeGoalEditModalBtn.addEventListener('click', () => {
-            editGoalModal.classList.add('hidden');
-            editGoalModal.classList.remove('flex');
+            const index = goals.findIndex(g => g.id === id);
+            if (index !== -1) {
+                const updatedProjectId = editGoalProjectSelect.value || null;
+                goals[index].name = updatedName;
+                goals[index].targetMs = updatedTargetMs;
+                goals[index].frequency = editForFrequencySelect.value;
+                goals[index].endDate = updatedEndDate;
+                goals[index].projectId = updatedProjectId;
+                goals[index].projectName = updatedProjectId ? editGoalProjectSelect.options[editGoalProjectSelect.selectedIndex].text : null;
+                saveToLocalStorage();
+                rerenderAll();
+                toggleModal(editGoalModal, false);
+                showToast("Goal updated!", 'success');
+            }
         });
 
-        cancelGoalEditBtn.addEventListener('click', () => {
-            editGoalModal.classList.add('hidden');
-            editGoalModal.classList.remove('flex');
+        window.openEditProjectModal = function(id) {
+            const project = projects.find(p => p.id === id);
+            if (project) {
+                editProjectId.value = project.id;
+                editProjectNameInput.value = project.name;
+                hideError(editProjectNameError, editProjectNameInput);
+                hideError(editProjectDuplicateError, editProjectNameInput);
+                toggleModal(editProjectModal, true);
+            }
+        };
+        saveProjectEditBtn.addEventListener('click', () => {
+            const id = editProjectId.value;
+            const updatedName = editProjectNameInput.value.trim();
+            if (!updatedName) { showError(editProjectNameError, editProjectNameInput, "Project name is required."); return; }
+            if (projects.some(p => p.name.toLowerCase() === updatedName.toLowerCase() && p.id !== id)) {
+                showError(editProjectDuplicateError, editProjectNameInput, "A project with this name already exists.");
+                return;
+            }
+
+            const index = projects.findIndex(p => p.id === id);
+            if (index !== -1) {
+                projects[index].name = updatedName;
+                timeEntries.forEach(e => { if (e.projectId === id) e.projectName = updatedName; });
+                goals.forEach(g => { if (g.projectId === id) g.projectName = updatedName; });
+                saveToLocalStorage();
+                rerenderAll();
+                toggleModal(editProjectModal, false);
+                showToast("Project updated!", 'success');
+            }
         });
 
+        // --- Close/Cancel Buttons for Edit Modals ---
+        closeTimeEntryEditModalBtn.addEventListener('click', () => toggleModal(editTimeEntryModal, false));
+        cancelTimeEntryEditBtn.addEventListener('click', () => toggleModal(editTimeEntryModal, false));
+        closeGoalEditModalBtn.addEventListener('click', () => toggleModal(editGoalModal, false));
+        cancelGoalEditBtn.addEventListener('click', () => toggleModal(editGoalModal, false));
+        closeProjectEditModalBtn.addEventListener('click', () => toggleModal(editProjectModal, false));
+        cancelProjectEditBtn.addEventListener('click', () => toggleModal(editProjectModal, false));
         editNoEndDateCheckbox.addEventListener('change', () => {
             editUntilDateInput.disabled = editNoEndDateCheckbox.checked;
             if (editNoEndDateCheckbox.checked) {
@@ -1923,334 +1588,119 @@
             }
         });
 
-        saveGoalEditBtn.addEventListener('click', () => {
-            const id = editGoalId.value;
-            const updatedName = editGoalNameInput.value.trim();
-            const updatedTargetHours = parseFloat(editForHoursInput.value);
-            const updatedFrequency = editForFrequencySelect.value;
-            const updatedEndDate = editNoEndDateCheckbox.checked ? null : editUntilDateInput.value;
-            const updatedProjectId = editGoalProjectSelect.value || null;
-            const updatedProjectName = updatedProjectId ? editGoalProjectSelect.options[editGoalProjectSelect.selectedIndex].text : null;
-
-            let isValid = true;
-
-            if (!updatedName) {
-                showError(editGoalNameError, editGoalNameInput, "Goal name is required.");
-                isValid = false;
-            } else {
-                hideError(editGoalNameError, editGoalNameInput);
-            }
-
-            if (isNaN(updatedTargetHours) || updatedTargetHours <= 0) {
-                showError(editForHoursError, editForHoursInput, "Enter a positive number for hours.");
-                isValid = false;
-            } else {
-                hideError(editForHoursError, editForHoursInput);
-            }
-
-            if (!editNoEndDateCheckbox.checked && !updatedEndDate) {
-                showError(editUntilDateError, editUntilDateInput, "Select an end date or check 'No end date'.");
-                isValid = false;
-            } else {
-                hideError(editUntilDateError, editUntilDateInput);
-            }
-
-            if (!isValid) {
-                return;
-            }
-
-            const index = goals.findIndex(g => g.id === id);
-            if (index !== -1) {
-                goals[index].name = updatedName;
-                goals[index].targetMs = updatedTargetHours * 3600 * 1000;
-                goals[index].frequency = updatedFrequency;
-                goals[index].endDate = updatedEndDate;
-                goals[index].projectId = updatedProjectId;
-                goals[index].projectName = updatedProjectName;
-                saveToLocalStorage();
-                renderGoals(); // Re-render to show updated goal
-                editGoalModal.classList.add('hidden');
-                editGoalModal.classList.remove('flex');
-                showToast("Goal updated successfully!", 'success');
-            }
+        // --- Import/Export Logic ---
+        openExportDataModalBtn.addEventListener('click', () => toggleModal(exportDataModal, true));
+        closeExportModalBtn.addEventListener('click', () => toggleModal(exportDataModal, false));
+        cancelExportBtn.addEventListener('click', () => toggleModal(exportDataModal, false));
+        
+        openImportDataModalBtn.addEventListener('click', () => {
+            importFileInput.value = ''; // Reset file input
+            hideError(importFileError, importFileInput);
+            toggleModal(importDataModal, true);
         });
-
-        // --- Edit Project Modal Logic ---
-        window.openEditProjectModal = function(id) {
-            const project = projects.find(p => p.id === id);
-            if (project) {
-                editProjectId.value = project.id;
-                editProjectNameInput.value = project.name;
-                hideError(editProjectNameError, editProjectNameInput); // Clear previous error
-                hideError(editProjectDuplicateError, editProjectNameInput); // Clear duplicate error
-                editProjectModal.classList.remove('hidden');
-                editProjectModal.classList.add('flex');
-                setFocusToFirstElement(editProjectModal);
-            }
-        };
-
-        closeProjectEditModalBtn.addEventListener('click', () => {
-            editProjectModal.classList.add('hidden');
-            editProjectModal.classList.remove('flex');
-        });
-
-        cancelProjectEditBtn.addEventListener('click', () => {
-            editProjectModal.classList.add('hidden');
-            editProjectModal.classList.remove('flex');
-        });
-
-        saveProjectEditBtn.addEventListener('click', () => {
-            const id = editProjectId.value;
-            const updatedName = editProjectNameInput.value.trim();
-            let isValid = true;
-
-            if (!updatedName) {
-                showError(editProjectNameError, editProjectNameInput, "Project name is required.");
-                isValid = false;
-            } else {
-                hideError(editProjectNameError, editProjectNameInput);
-            }
-
-            // Check for duplicate project names (excluding the current project being edited)
-            if (projects.some(p => p.name.toLowerCase() === updatedName.toLowerCase() && p.id !== id)) {
-                showError(editProjectDuplicateError, editProjectNameInput, "A project with this name already exists.");
-                isValid = false;
-            } else {
-                hideError(editProjectDuplicateError, editProjectNameInput);
-            }
-
-            if (!isValid) {
-                return;
-            }
-
-            const index = projects.findIndex(p => p.id === id);
-            if (index !== -1) {
-                projects[index].name = updatedName;
-                // Also update project names in time entries and goals
-                timeEntries.forEach(entry => {
-                    if (entry.projectId === id) {
-                        entry.projectName = updatedName;
-                    }
-                });
-                goals.forEach(goal => {
-                    if (goal.projectId === id) {
-                        goal.projectName = updatedName;
-                    }
-                });
-
-                saveToLocalStorage();
-                renderProjects(); // Re-render projects list and dropdowns
-                renderEntries(); // Re-render entries to update project names
-                renderGoals(); // Re-render goals to update project names
-                editProjectModal.classList.add('hidden');
-                editProjectModal.classList.remove('flex');
-                showToast("Project updated successfully!", 'success');
-            }
-        });
-
-
-        // --- Export Data Modal Logic ---
-        openExportDataModalBtn.addEventListener('click', () => {
-            // Reset modal state
-            document.querySelector('input[name="exportDataType"][value="timeEntries"]').checked = true;
-            document.querySelector('input[name="timeEntriesScope"][value="all"]').checked = true;
-            document.querySelector('input[name="exportFormat"][value="csv"]').checked = true;
-            timeEntriesExportOptions.style.display = 'block'; // Show time entries options by default
-
-            exportDataModal.classList.remove('hidden');
-            exportDataModal.classList.add('flex');
-            setFocusToFirstElement(exportDataModal);
-        });
-
-        closeExportModalBtn.addEventListener('click', () => {
-            exportDataModal.classList.add('hidden');
-            exportDataModal.classList.remove('flex');
-        });
-
-        cancelExportBtn.addEventListener('click', () => {
-            exportDataModal.classList.add('hidden');
-            exportDataModal.classList.remove('flex');
-        });
-
-        // Toggle time entries export options visibility based on data type selection
-        exportDataTypeRadios.forEach(radio => {
-            radio.addEventListener('change', () => {
-                if (radio.value === 'timeEntries') {
-                    timeEntriesExportOptions.style.display = 'block';
-                } else {
-                    timeEntriesExportOptions.style.display = 'none';
-                }
-            });
-        });
+        closeImportModalBtn.addEventListener('click', () => toggleModal(importDataModal, false));
+        cancelImportBtn.addEventListener('click', () => toggleModal(importDataModal, false));
 
         exportDataConfirmBtn.addEventListener('click', () => {
-            const selectedDataType = document.querySelector('input[name="exportDataType"]:checked').value;
-            const selectedFormat = document.querySelector('input[name="exportFormat"]:checked').value;
-            let dataToExport = [];
-            let filename = '';
+            const allData = { projects, goals, timeEntries };
+            const filename = `time_tracker_backup_${new Date().toISOString().split('T')[0]}.json`;
+            exportToJson(allData, filename);
+            toggleModal(exportDataModal, false);
+        });
+        
+        importDataConfirmBtn.addEventListener('click', () => {
+            const file = importFileInput.files[0];
+            if (!file) {
+                showError(importFileError, importFileInput, "Please select a file to import.");
+                return;
+            }
+            hideError(importFileError, importFileInput);
 
-            if (selectedDataType === 'timeEntries') {
-                const scope = document.querySelector('input[name="timeEntriesScope"]:checked').value;
-                if (scope === 'all') {
-                    dataToExport = timeEntries;
-                    filename = 'time_entries_all';
-                } else { // 'filtered'
-                    const filterProjectId = reportProjectSelect.value || null; // Use report modal's project filter
-                    const startDateStr = reportStartDateInput.value; // Use report modal's start date
-                    const endDateStr = reportEndDateInput.value;     // Use report modal's end date
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                try {
+                    const importedData = JSON.parse(event.target.result);
+                    const importMode = document.querySelector('input[name="importMode"]:checked').value;
 
-                    let startDate = startDateStr ? new Date(startDateStr) : null;
-                    let endDate = endDateStr ? new Date(endDateStr) : null;
-
-                    if (endDate) {
-                        endDate.setHours(23, 59, 59, 999);
+                    // Basic validation
+                    if (!importedData || !Array.isArray(importedData.timeEntries) || !Array.isArray(importedData.goals) || !Array.isArray(importedData.projects)) {
+                        throw new Error("Invalid file structure. Required data is missing.");
                     }
 
-                    // Re-validate dates in case user changed them in report modal without generating report
-                    if (startDate && endDate && startDate > endDate) {
-                        showToast("Report start date cannot be after end date. Please adjust in Advanced Reports.", 'error');
-                        return;
+                    if (importMode === 'replace') {
+                        timeEntries = importedData.timeEntries;
+                        goals = importedData.goals;
+                        projects = importedData.projects;
+                        showToast("Data replaced successfully!", 'success');
+                    } else { // Merge
+                        const mergeById = (existing, incoming) => {
+                            const existingIds = new Set(existing.map(item => item.id));
+                            const newItems = incoming.filter(item => !existingIds.has(item.id));
+                            return [...existing, ...newItems];
+                        };
+                        timeEntries = mergeById(timeEntries, importedData.timeEntries);
+                        goals = mergeById(goals, importedData.goals);
+                        projects = mergeById(projects, importedData.projects);
+                        showToast("Data merged successfully!", 'success');
                     }
 
-                    dataToExport = timeEntries.filter(entry => {
-                        const entryDate = new Date(entry.startTime);
-                        const matchesProject = !filterProjectId || entry.projectId === filterProjectId;
-                        const matchesStartDate = !startDate || entryDate >= startDate;
-                        const matchesEndDate = !endDate || entryDate <= endDate;
-                        return matchesProject && matchesStartDate && matchesEndDate;
-                    });
-                    filename = 'time_entries_filtered';
+                    saveToLocalStorage();
+                    rerenderAll();
+                    toggleModal(importDataModal, false);
+
+                } catch (e) {
+                    console.error("Error importing data:", e);
+                    showToast(`Import failed: ${e.message}`, 'error', 5000);
                 }
-            } else if (selectedDataType === 'goals') {
-                dataToExport = goals;
-                filename = 'goals';
-            } else if (selectedDataType === 'projects') {
-                dataToExport = projects;
-                filename = 'projects';
-            }
-
-            if (selectedFormat === 'csv') {
-                exportToCsv(dataToExport, filename);
-            } else { // json
-                exportToJson(dataToExport, filename);
-            }
-
-            exportDataModal.classList.add('hidden');
-            exportDataModal.classList.remove('flex');
-            showToast("Data exported successfully!", 'success');
+            };
+            reader.onerror = () => showToast("Error reading the file.", 'error');
+            reader.readAsText(file);
         });
 
-        /**
-         * Converts an array of objects to CSV format and triggers download.
-         * @param {Array<Object>} data - The array of objects to export.
-         * @param {string} filename - The desired filename (without extension).
-         */
-        function exportToCsv(data, filename) {
-            if (data.length === 0) {
-                showToast("No data to export.", 'error');
-                return;
-            }
-
-            const replacer = (key, value) => value === null ? '' : value; // Handle null values
-            const header = Object.keys(data[0]);
-            let csv = data.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
-            csv.unshift(header.join(',')); // Add header column
-            csv = csv.join('\r\n');
-
-            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            if (link.download !== undefined) { // Feature detection
-                const url = URL.createObjectURL(blob);
-                link.setAttribute('href', url);
-                link.setAttribute('download', `${filename}.csv`);
-                link.style.visibility = 'hidden';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            } else {
-                showToast("Your browser does not support downloading files directly. Please copy the data manually.", 'error');
-            }
-        }
-
-        /**
-         * Converts an array of objects to JSON format and triggers download.
-         * @param {Array<Object>} data - The array of objects to export.
-         * @param {string} filename - The desired filename (without extension).
-         */
         function exportToJson(data, filename) {
-            if (data.length === 0) {
-                showToast("No data to export.", 'error');
-                return;
-            }
-            const json = JSON.stringify(data, null, 2); // Pretty print JSON
-
-            const blob = new Blob([json], { type: 'application/json;charset=utf-8;' });
-            const link = document.createElement('a');
-            if (link.download !== undefined) {
-                const url = URL.createObjectURL(blob);
-                link.setAttribute('href', url);
-                link.setAttribute('download', `${filename}.json`);
-                link.style.visibility = 'hidden';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            } else {
-                showToast("Your browser does not support downloading files directly. Please copy the data manually.", 'error');
-            }
+            if (!data) return showToast("No data to export.", 'error');
+            triggerDownload(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json;charset=utf-8;' }), filename);
         }
 
+        function triggerDownload(blob, filename) {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast("Data export started!", 'success');
+        }
 
         // --- Delete Functions ---
-        /**
-         * Deletes a time entry from the list and local storage.
-         * @param {string} id - The ID of the time entry to delete.
-         */
         window.deleteEntry = function(id) {
             showCustomModal("Are you sure you want to delete this time entry?", 'confirm', (confirmed) => {
                 if (confirmed) {
-                    timeEntries = timeEntries.filter(entry => entry.id !== id); // Filter out the deleted entry
-                    saveToLocalStorage(); // Save changes
-                    renderEntries(); // Re-render the list
-                    renderGoals(); // Re-render goals as totals might change
-                    renderProjects(); // Re-render projects to update totals
+                    timeEntries = timeEntries.filter(entry => entry.id !== id);
+                    saveToLocalStorage();
+                    rerenderAll();
                     showToast("Time entry deleted.", 'success');
                 }
             });
         };
-
-        /**
-         * Deletes a goal from the list and local storage.
-         * @param {string} id - The ID of the goal to delete.
-         */
         window.deleteGoal = function(id) {
             showCustomModal("Are you sure you want to delete this goal?", 'confirm', (confirmed) => {
                 if (confirmed) {
-                    goals = goals.filter(goal => goal.id !== id); // Filter out the deleted goal
-                    saveToLocalStorage(); // Save changes
-                    renderGoals(); // Re-render the goals list
+                    goals = goals.filter(goal => goal.id !== id);
+                    saveToLocalStorage();
+                    rerenderAll();
                     showToast("Goal deleted.", 'success');
                 }
             });
         };
-
-        /**
-         * Deletes a project from the list and local storage.
-         * Also removes any time entries or goals associated with this project.
-         * @param {string} id - The ID of the project to delete.
-         */
         window.deleteProject = function(id) {
             showCustomModal("Deleting a project will also delete all associated time entries and goals. Are you sure?", 'confirm', (confirmed) => {
                 if (confirmed) {
-                    projects = projects.filter(project => project.id !== id);
-                    // Also delete associated time entries
-                    timeEntries = timeEntries.filter(entry => entry.projectId !== id);
-                    // Also delete associated goals
-                    goals = goals.filter(goal => goal.projectId !== id);
-
+                    projects = projects.filter(p => p.id !== id);
+                    timeEntries = timeEntries.filter(e => e.projectId !== id);
+                    goals = goals.filter(g => g.projectId !== id);
                     saveToLocalStorage();
-                    renderProjects();
-                    renderEntries();
-                    renderGoals();
+                    rerenderAll();
                     showToast("Project and associated data deleted.", 'success');
                 }
             });
@@ -2258,11 +1708,8 @@
 
         // --- Initial Load ---
         window.onload = () => {
-            loadFromLocalStorage(); // Load data when the page loads
-            renderProjects(); // Render projects first to populate dropdowns
-            renderEntries(); // Render initial time entries for currentDisplayedDate
-            renderGoals(); // Render initial goals
-            // If a task was being tracked before refresh, ensure the timer display is running
+            loadFromLocalStorage();
+            rerenderAll();
             if (currentTask) {
                 startTimerDisplay();
             }
